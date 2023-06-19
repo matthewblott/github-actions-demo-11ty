@@ -2,7 +2,7 @@ name: Main Workflow
 
 on:
   push:
-    branches: 
+    branches:
       - main
   pull_request:
     branches:
@@ -44,21 +44,21 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-      
-      - name: ssh scp ssh pipelines
-        uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
-        env:
-          WELCOME: "ssh scp ssh pipelines"
-          LASTSSH: "Doing something after copying"
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          user: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          connect_timeout: 10s
-          first_ssh: |
-            echo $WELCOME 
-            rm -f notes.txt
-          scp: |
-            './notes.txt*' => /home/deployer/
-          last_ssh: |
-            echo $LASTSSH
+
+      # - name: ssh scp ssh pipelines
+      #   uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
+      #   env:
+      #     WELCOME: "ssh scp ssh pipelines"
+      #     LASTSSH: "Doing something after copying"
+      #   with:
+      #     host: ${{ secrets.REMOTE_HOST }}
+      #     user: ${{ secrets.REMOTE_USER }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     connect_timeout: 10s
+      #     first_ssh: |
+      #       echo $WELCOME
+      #       rm -f notes.txt
+      #     scp: |
+      #       './notes.txt*' => /home/deployer/
+      #     last_ssh: |
+      #       echo $LASTSSH

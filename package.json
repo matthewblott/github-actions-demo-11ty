@@ -5,8 +5,8 @@
   "scripts": {
     "build:css": "postcss ./src/assets/css/main.css -o ./www/bundle/bundle.css",
     "watch:css": "postcss ./src/assets/css/main.css -o ./www/bundle/bundle.css --watch",
-    "dev": "npm run eleventy --serve & pnpm watch:css",
-    "build": "npm run build:css && npm run eleventy"
+    "dev": "pnpm eleventy --serve & pnpm watch:css",
+    "build": "pnpm build:css && pnpm eleventy"
   },
   "dependencies": {
     "@11ty/eleventy": "^2.0.0",
