@@ -68,3 +68,6 @@ jobs:
             './www.tar.gz' => /home/deployer/
           last_ssh: |
             echo $LASTSSH
+            tar -xzvf ./www.tar.gz
+            sudo chown -R www-data:www-data ./www
+            sudo mv ./www /var/www/github-actions-demo-11ty/public
