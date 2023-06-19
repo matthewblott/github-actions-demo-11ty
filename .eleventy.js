@@ -1,4 +1,4 @@
-const xmlFiltersPlugin = require("eleventy-xml-plugin");
+// const xmlFiltersPlugin = require("eleventy-xml-plugin");
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.setUseGitIgnore(false);
