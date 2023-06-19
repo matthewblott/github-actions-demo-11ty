@@ -1,9 +1,12 @@
 name: Main Workflow
 
 on:
+  push:
+    branches: 
+    - main
   pull_request:
     branches:
-      - main
+    - main
 
 jobs:
   build:
@@ -13,14 +16,18 @@ jobs:
         working-directory: ./src/
     strategy:
       matrix:
-        dotnet: ["6.0.x"]
-    name: Dotnet ${{ matrix.dotnet }} sample
+        node-version:
+        - 16.x
+
+    name: Node ${{ matrix.node-version }} sample
     steps:
       - uses: actions/checkout@v3
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          dotnet-version: ${{ matrix.dotnet }}
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run build --if-present
 
       - name: ssh scp ssh pipelines
         uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
