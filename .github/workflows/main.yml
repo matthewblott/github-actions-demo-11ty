@@ -44,6 +44,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+        run: pnpm build
+        run: tar -czvf www.tar.gz ./www
 
       - name: ssh scp ssh pipelines
         uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
